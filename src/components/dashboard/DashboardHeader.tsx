@@ -4,6 +4,7 @@ import { User, LogOut } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useLogout } from '@/services/authService';
 import Logo from '@/components/ui/Logo';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 interface DashboardHeaderProps {
   userEmail?: string;
@@ -13,14 +14,15 @@ const DashboardHeader = ({ userEmail }: DashboardHeaderProps) => {
   const { logout } = useLogout();
 
   return (
-    <header className="bg-white px-6 py-4">
+    <header className="bg-background border-b border-border px-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <Logo size="xl" />
-          <h1 className="text-xl font-medium text-gray-900">Compucom LM</h1>
+          <h1 className="text-xl font-medium text-foreground">Compucom LM</h1>
         </div>
         
         <div className="flex items-center space-x-4">
+          <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="sm" className="p-0">

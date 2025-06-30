@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { useLogout } from '@/services/authService';
 import Logo from '@/components/ui/Logo';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 interface NotebookHeaderProps {
   title: string;
@@ -60,13 +61,13 @@ const NotebookHeader = ({ title, notebookId }: NotebookHeaderProps) => {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4">
+    <header className="bg-background border-b border-border px-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <button 
               onClick={handleIconClick}
-              className="hover:bg-gray-50 rounded transition-colors p-1"
+              className="hover:bg-muted rounded transition-colors p-1"
             >
               <Logo />
             </button>
@@ -76,13 +77,13 @@ const NotebookHeader = ({ title, notebookId }: NotebookHeaderProps) => {
                 onChange={(e) => setEditedTitle(e.target.value)}
                 onKeyDown={handleKeyDown}
                 onBlur={handleBlur}
-                className="text-lg font-medium text-gray-900 border-none shadow-none p-0 h-auto focus-visible:ring-0 min-w-[300px] w-auto"
+                className="text-lg font-medium text-foreground border-none shadow-none p-0 h-auto focus-visible:ring-0 min-w-[300px] w-auto"
                 autoFocus
                 disabled={isUpdating}
               />
             ) : (
               <span 
-                className="text-lg font-medium text-gray-900 cursor-pointer hover:bg-gray-50 rounded px-2 py-1 transition-colors"
+                className="text-lg font-medium text-foreground cursor-pointer hover:bg-muted rounded px-2 py-1 transition-colors"
                 onClick={handleTitleClick}
               >
                 {title}
@@ -92,6 +93,7 @@ const NotebookHeader = ({ title, notebookId }: NotebookHeaderProps) => {
         </div>
         
         <div className="flex items-center space-x-4">
+          <ThemeToggle />
           <div className="flex items-center space-x-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
