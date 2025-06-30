@@ -19,7 +19,7 @@ interface AudioPlayerProps {
 
 const AudioPlayer = ({ 
   audioUrl, 
-  title = "Deep Dive Conversation", 
+  title = "Conversation approfondie", 
   notebookId,
   expiresAt,
   onError,
@@ -211,14 +211,14 @@ const AudioPlayer = ({
       URL.revokeObjectURL(blobUrl);
       
       toast({
-        title: "Download Started",
-        description: "Your audio file is being downloaded.",
+        title: "Téléchargement démarré",
+        description: "Votre fichier audio est en cours de téléchargement.",
       });
     } catch (error) {
       console.error('Download failed:', error);
       toast({
-        title: "Download Failed",
-        description: "Failed to download the audio file. Please try again.",
+        title: "Échec du téléchargement",
+        description: "Impossible de télécharger le fichier audio. Veuillez réessayer.",
         variant: "destructive",
       });
     } finally {
@@ -229,8 +229,8 @@ const AudioPlayer = ({
   const deleteAudio = async () => {
     if (!notebookId) {
       toast({
-        title: "Error",
-        description: "Cannot delete audio - notebook ID not found",
+        title: "Erreur",
+        description: "Impossible de supprimer l'audio - ID du carnet non trouvé",
         variant: "destructive",
       });
       return;
@@ -288,8 +288,8 @@ const AudioPlayer = ({
       }
 
       toast({
-        title: "Audio Deleted",
-        description: "The audio overview and associated files have been successfully deleted.",
+        title: "Audio supprimé",
+        description: "L'aperçu audio et les fichiers associés ont été supprimés avec succès.",
       });
 
       // Call the onDeleted callback to update parent component
@@ -298,8 +298,8 @@ const AudioPlayer = ({
     } catch (error) {
       console.error('Failed to delete audio:', error);
       toast({
-        title: "Delete Failed",
-        description: "Failed to delete the audio overview. Please try again.",
+        title: "Échec de la suppression",
+        description: "Impossible de supprimer l'aperçu audio. Veuillez réessayer.",
         variant: "destructive",
       });
     } finally {
@@ -308,12 +308,12 @@ const AudioPlayer = ({
   };
 
   return (
-    <Card className="p-4 space-y-4">
+    <Card className="p-4 space-y-4 bg-card border-border">
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
       
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <h4 className="font-medium text-gray-900">{title}</h4>
+          <h4 className="font-medium text-card-foreground">{title}</h4>
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -332,7 +332,7 @@ const AudioPlayer = ({
               ) : (
                 <Download className="h-4 w-4 mr-2" />
               )}
-              {isDownloading ? 'Downloading...' : 'Download'}
+              {isDownloading ? 'Téléchargement...' : 'Télécharger'}
             </DropdownMenuItem>
             <DropdownMenuItem 
               onClick={deleteAudio}
@@ -340,7 +340,7 @@ const AudioPlayer = ({
               disabled={isDeleting}
             >
               <Trash2 className="h-4 w-4 mr-2" />
-              Delete
+              Supprimer
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -348,29 +348,29 @@ const AudioPlayer = ({
 
       {/* Auto-refresh indicator */}
       {autoRetryInProgress && (
-        <div className="flex items-center justify-between p-3 bg-blue-50 rounded-md border border-blue-200">
+        <div className="flex items-center justify-between p-3 bg-blue-900/20 rounded-md border border-blue-900/30">
           <div className="flex items-center space-x-2">
-            <Loader2 className="h-4 w-4 text-blue-600 animate-spin" />
-            <span className="text-sm text-blue-600">Refreshing audio access...</span>
+            <Loader2 className="h-4 w-4 text-blue-500 animate-spin" />
+            <span className="text-sm text-blue-500">Actualisation de l'accès audio...</span>
           </div>
         </div>
       )}
 
       {/* Error State */}
       {audioError && !autoRetryInProgress && (
-        <div className="flex items-center justify-between p-3 bg-red-50 rounded-md border border-red-200">
+        <div className="flex items-center justify-between p-3 bg-red-900/20 rounded-md border border-red-900/30">
           <div className="flex items-center space-x-2">
-            <AlertTriangle className="h-4 w-4 text-red-600" />
-            <span className="text-sm text-red-600">{audioError}</span>
+            <AlertTriangle className="h-4 w-4 text-red-500" />
+            <span className="text-sm text-red-500">{audioError}</span>
           </div>
           <Button
             variant="outline"
             size="sm"
             onClick={onRetry || retryLoad}
-            className="text-red-600 border-red-300 hover:bg-red-50"
+            className="text-red-500 border-red-800 hover:bg-red-900/20"
           >
             <RefreshCw className="h-4 w-4 mr-1" />
-            Retry
+            Réessayer
           </Button>
         </div>
       )}
@@ -385,7 +385,7 @@ const AudioPlayer = ({
           className="w-full"
           disabled={loading || !!audioError}
         />
-        <div className="flex justify-between text-xs text-gray-500">
+        <div className="flex justify-between text-xs text-muted-foreground">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>
@@ -408,7 +408,7 @@ const AudioPlayer = ({
             size="sm"
             onClick={togglePlayPause}
             disabled={loading || !!audioError}
-            className="w-12"
+            className="w-12 bg-[#0088c2] hover:bg-[#006a99]"
           >
             {loading ? (
               <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
@@ -422,7 +422,7 @@ const AudioPlayer = ({
 
         {/* Volume Control */}
         <div className="flex items-center space-x-2 w-24">
-          <Volume2 className="h-4 w-4 text-gray-500" />
+          <Volume2 className="h-4 w-4 text-muted-foreground" />
           <Slider
             value={[volume]}
             max={1}

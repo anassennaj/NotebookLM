@@ -14,19 +14,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <NextThemesProvider attribute="class" defaultTheme="light" enableSystem>
+    <NextThemesProvider attribute="class" defaultTheme="dark" enableSystem>
       {children}
     </NextThemesProvider>
   )
-}
-
-export function useTheme() {
-  const context = useContext(createContext(null))
-  const { theme, setTheme } = useContext(createContext(null))
-
-  return {
-    theme,
-    setTheme,
-    toggleTheme: () => setTheme(theme === "dark" ? "light" : "dark"),
-  }
 }

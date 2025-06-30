@@ -69,7 +69,7 @@ const AuthForm = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto bg-card text-card-foreground">
       <CardHeader>
         <CardTitle>Connexion</CardTitle>
         <CardDescription>
@@ -87,6 +87,7 @@ const AuthForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="Entrez votre email"
+              className="bg-background text-foreground"
             />
           </div>
           <div className="space-y-2">
@@ -99,9 +100,10 @@ const AuthForm = () => {
               required
               placeholder="Entrez votre mot de passe"
               minLength={6}
+              className="bg-background text-foreground"
             />
           </div>
-          <Button type="submit" className="w-full" disabled={loading}>
+          <Button type="submit" className="w-full bg-[#0088c2] hover:bg-[#006a99]" disabled={loading}>
             {loading ? 'Connexion en cours...' : 'Se connecter'}
           </Button>
         </form>

@@ -13,15 +13,15 @@ const Dashboard = () => {
   // Show loading while auth is initializing
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <DashboardHeader userEmail={user?.email} />
         <main className="max-w-7xl mx-auto px-6 py-8">
           <div className="mb-8">
-            <h1 className="text-4xl font-medium text-gray-900 mb-2">Bienvenue sur Compucom LM</h1>
+            <h1 className="text-4xl font-medium text-foreground mb-2">Bienvenue sur Compucom LM</h1>
           </div>
           <div className="text-center py-16">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0088c2] mx-auto mb-4"></div>
-            <p className="text-gray-600">Initialisation...</p>
+            <p className="text-muted-foreground">Initialisation...</p>
           </div>
         </main>
       </div>
@@ -31,11 +31,11 @@ const Dashboard = () => {
   // Show auth error if present
   if (authError) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <DashboardHeader userEmail={user?.email} />
         <main className="max-w-7xl mx-auto px-6 py-8">
           <div className="mb-8">
-            <h1 className="text-4xl font-medium text-gray-900 mb-2">Bienvenue sur Compucom LM</h1>
+            <h1 className="text-4xl font-medium text-foreground mb-2">Bienvenue sur Compucom LM</h1>
           </div>
           <div className="text-center py-16">
             <p className="text-red-600">Erreur d'authentification: {authError}</p>
@@ -54,15 +54,15 @@ const Dashboard = () => {
   // Show notebooks loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <DashboardHeader userEmail={user?.email} />
         <main className="max-w-7xl mx-auto px-6 py-8">
           <div className="mb-8">
-            <h1 className="text-4xl font-medium text-gray-900 mb-2">Bienvenue sur Compucom LM</h1>
+            <h1 className="text-4xl font-medium text-foreground mb-2">Bienvenue sur Compucom LM</h1>
           </div>
           <div className="text-center py-16">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0088c2] mx-auto mb-4"></div>
-            <p className="text-gray-600">Chargement de vos carnets...</p>
+            <p className="text-muted-foreground">Chargement de vos carnets...</p>
           </div>
         </main>
       </div>
@@ -72,11 +72,11 @@ const Dashboard = () => {
   // Show notebooks error if present
   if (isError && error) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <DashboardHeader userEmail={user?.email} />
         <main className="max-w-7xl mx-auto px-6 py-8">
           <div className="mb-8">
-            <h1 className="text-4xl font-medium text-gray-900 mb-2">Bienvenue sur Compucom LM</h1>
+            <h1 className="text-4xl font-medium text-foreground mb-2">Bienvenue sur Compucom LM</h1>
           </div>
           <div className="text-center py-16">
             <p className="text-red-600">Erreur lors du chargement des carnets: {error}</p>
@@ -93,12 +93,12 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <DashboardHeader userEmail={user?.email} />
       
       <main className="max-w-7xl mx-auto px-6 py-[60px]">
         <div className="mb-8">
-          <h1 className="font-medium text-gray-900 mb-2 text-5xl">Bienvenue sur Compucom LM</h1>
+          <h1 className="font-medium text-foreground mb-2 text-5xl">Bienvenue sur Compucom LM</h1>
         </div>
 
         {hasNotebooks ? <NotebookGrid /> : <EmptyDashboard />}

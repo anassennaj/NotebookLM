@@ -402,7 +402,7 @@ const AddSourcesDialog = ({
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-card text-card-foreground">
           <DialogHeader className="pb-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
@@ -419,8 +419,8 @@ const AddSourcesDialog = ({
           <div className="space-y-6">
             <div>
               <h2 className="text-xl font-medium mb-2">Ajouter des sources</h2>
-              <p className="text-gray-600 text-sm mb-1">Les sources permettent à Compucom LM de baser ses réponses sur les informations qui vous importent le plus.</p>
-              <p className="text-gray-500 text-xs">
+              <p className="text-muted-foreground text-sm mb-1">Les sources permettent à Compucom LM de baser ses réponses sur les informations qui vous importent le plus.</p>
+              <p className="text-muted-foreground text-xs">
                 (Exemples : plans marketing, lectures de cours, notes de recherche, transcriptions de réunions, documents de vente, etc.)
               </p>
             </div>
@@ -428,7 +428,7 @@ const AddSourcesDialog = ({
             {/* File Upload Area */}
             <div 
               className={`border-2 border-dashed rounded-lg p-12 text-center transition-colors ${
-                dragActive ? 'border-blue-400 bg-blue-50' : 'border-gray-300 hover:border-gray-400'
+                dragActive ? 'border-primary bg-primary/10' : 'border-border hover:border-muted-foreground'
               } ${isProcessingFiles ? 'opacity-50 pointer-events-none' : ''}`}
               onDragEnter={handleDrag}
               onDragLeave={handleDrag}
@@ -436,21 +436,21 @@ const AddSourcesDialog = ({
               onDrop={handleDrop}
             >
               <div className="flex flex-col items-center space-y-4">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-slate-100">
-                  <Upload className="h-6 w-6 text-slate-600" />
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-muted">
+                  <Upload className="h-6 w-6 text-muted-foreground" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900 mb-2">
+                  <h3 className="font-medium text-foreground mb-2">
                     {isProcessingFiles ? 'Traitement des fichiers...' : 'Télécharger des sources'}
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-muted-foreground text-sm">
                     {isProcessingFiles ? (
                       'Veuillez patienter pendant le traitement de vos fichiers'
                     ) : (
                       <>
                         Glissez-déposez ou{' '}
                         <button 
-                          className="text-blue-600 hover:underline" 
+                          className="text-primary hover:underline" 
                           onClick={() => document.getElementById('file-upload')?.click()}
                           disabled={isProcessingFiles}
                         >
@@ -461,7 +461,7 @@ const AddSourcesDialog = ({
                     )}
                   </p>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-muted-foreground">
                   Types de fichiers pris en charge : PDF, txt, Markdown, Audio (ex. mp3)
                 </p>
                 <input
@@ -480,24 +480,24 @@ const AddSourcesDialog = ({
             <div className="grid grid-cols-2 gap-4">
               <Button
                 variant="outline"
-                className="h-auto p-4 flex flex-col items-center space-y-2"
+                className="h-auto p-4 flex flex-col items-center space-y-2 bg-card hover:bg-card/80"
                 onClick={() => setShowMultipleWebsiteDialog(true)}
                 disabled={isProcessingFiles}
               >
                 <Link className="h-6 w-6 text-green-600" />
                 <span className="font-medium">Lien - Site Web</span>
-                <span className="text-sm text-gray-500">Plusieurs URLs à la fois</span>
+                <span className="text-sm text-muted-foreground">Plusieurs URLs à la fois</span>
               </Button>
 
               <Button
                 variant="outline"
-                className="h-auto p-4 flex flex-col items-center space-y-2"
+                className="h-auto p-4 flex flex-col items-center space-y-2 bg-card hover:bg-card/80"
                 onClick={() => setShowCopiedTextDialog(true)}
                 disabled={isProcessingFiles}
               >
                 <Copy className="h-6 w-6 text-purple-600" />
                 <span className="font-medium">Coller du texte</span>
-                <span className="text-sm text-gray-500">Ajouter du contenu copié</span>
+                <span className="text-sm text-muted-foreground">Ajouter du contenu copié</span>
               </Button>
             </div>
           </div>
