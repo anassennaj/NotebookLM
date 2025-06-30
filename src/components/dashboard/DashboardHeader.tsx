@@ -16,7 +16,7 @@ const DashboardHeader = ({ userEmail }: DashboardHeaderProps) => {
     <header className="bg-white px-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <Logo />
+          <Logo size="lg" />
           <h1 className="text-xl font-medium text-gray-900">Compucom LM</h1>
         </div>
         
