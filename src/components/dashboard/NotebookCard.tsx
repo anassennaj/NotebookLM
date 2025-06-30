@@ -56,15 +56,15 @@ const NotebookCard = ({
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Delete this notebook?</AlertDialogTitle>
+              <AlertDialogTitle>Supprimer ce carnet ?</AlertDialogTitle>
               <AlertDialogDescription>
-                You're about to delete this notebook and all of its content. This cannot be undone.
+                Vous êtes sur le point de supprimer ce carnet et tout son contenu. Cette action est irréversible.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={handleConfirmDelete} className="bg-blue-600 hover:bg-blue-700" disabled={isDeleting}>
-                {isDeleting ? 'Deleting...' : 'Delete'}
+              <AlertDialogCancel>Annuler</AlertDialogCancel>
+              <AlertDialogAction onClick={handleConfirmDelete} className="bg-[#0088c2] hover:bg-[#006a99]" disabled={isDeleting}>
+                {isDeleting ? 'Suppression...' : 'Supprimer'}
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

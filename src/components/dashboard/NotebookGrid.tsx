@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import NotebookCard from './NotebookCard';
@@ -14,7 +13,7 @@ import {
 
 const NotebookGrid = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [sortBy, setSortBy] = useState('Most recent');
+  const [sortBy, setSortBy] = useState('Plus récent');
   const {
     notebooks,
     isLoading,
@@ -28,9 +27,9 @@ const NotebookGrid = () => {
     
     const sorted = [...notebooks];
     
-    if (sortBy === 'Most recent') {
+    if (sortBy === 'Plus récent') {
       return sorted.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
-    } else if (sortBy === 'Title') {
+    } else if (sortBy === 'Titre') {
       return sorted.sort((a, b) => a.title.localeCompare(b.title));
     }
     
@@ -39,7 +38,7 @@ const NotebookGrid = () => {
 
   const handleCreateNotebook = () => {
     createNotebook({
-      title: 'Untitled notebook',
+      title: 'Carnet sans titre',
       description: ''
     }, {
       onSuccess: data => {
@@ -65,14 +64,14 @@ const NotebookGrid = () => {
 
   if (isLoading) {
     return <div className="text-center py-16">
-        <p className="text-gray-600">Loading notebooks...</p>
+        <p className="text-gray-600">Chargement des carnets...</p>
       </div>;
   }
 
   return <div>
       <div className="flex items-center justify-between mb-8">
         <Button className="bg-black hover:bg-gray-800 text-white rounded-full px-6" onClick={handleCreateNotebook} disabled={isCreating}>
-          {isCreating ? 'Creating...' : '+ Create new'}
+          {isCreating ? 'Création...' : '+ Créer nouveau'}
         </Button>
         
         <div className="flex items-center space-x-4">
@@ -84,13 +83,13 @@ const NotebookGrid = () => {
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuItem onClick={() => setSortBy('Most recent')} className="flex items-center justify-between">
-                Most recent
-                {sortBy === 'Most recent' && <Check className="h-4 w-4" />}
+              <DropdownMenuItem onClick={() => setSortBy('Plus récent')} className="flex items-center justify-between">
+                Plus récent
+                {sortBy === 'Plus récent' && <Check className="h-4 w-4" />}
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setSortBy('Title')} className="flex items-center justify-between">
-                Title
-                {sortBy === 'Title' && <Check className="h-4 w-4" />}
+              <DropdownMenuItem onClick={() => setSortBy('Titre')} className="flex items-center justify-between">
+                Titre
+                {sortBy === 'Titre' && <Check className="h-4 w-4" />}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -102,9 +101,9 @@ const NotebookGrid = () => {
             <NotebookCard notebook={{
           id: notebook.id,
           title: notebook.title,
-          date: new Date(notebook.updated_at).toLocaleDateString('en-US', {
-            month: 'short',
+          date: new Date(notebook.updated_at).toLocaleDateString('fr-FR', {
             day: 'numeric',
+            month: 'short',
             year: 'numeric'
           }),
           sources: notebook.sources?.[0]?.count || 0,

@@ -159,22 +159,22 @@ const ChatArea = ({
   const getPlaceholderText = () => {
     if (isChatDisabled) {
       if (sourceCount === 0) {
-        return "Upload a source to get started...";
+        return "Téléchargez une source pour commencer...";
       } else {
-        return "Please wait while your sources are being processed...";
+        return "Veuillez patienter pendant le traitement de vos sources...";
       }
     }
-    return "Start typing...";
+    return "Commencez à écrire...";
   };
   return <div className="flex-1 flex flex-col h-full overflow-hidden">
       {hasSource ? <div className="flex-1 flex flex-col h-full overflow-hidden">
           {/* Chat Header */}
           <div className="p-4 border-b border-gray-200 flex-shrink-0">
             <div className="max-w-4xl mx-auto flex items-center justify-between">
-              <h2 className="text-lg font-medium text-gray-900">Chat</h2>
+              <h2 className="text-lg font-medium text-gray-900">Discussion</h2>
               {shouldShowRefreshButton && <Button variant="ghost" size="sm" onClick={handleRefreshChat} disabled={isDeletingChatHistory || isChatDisabled} className="flex items-center space-x-2">
                   <RefreshCw className={`h-4 w-4 ${isDeletingChatHistory ? 'animate-spin' : ''}`} />
-                  <span>{isDeletingChatHistory ? 'Clearing...' : 'Clear Chat'}</span>
+                  <span>{isDeletingChatHistory ? 'Effacement...' : 'Effacer la discussion'}</span>
                 </Button>}
             </div>
           </div>
@@ -189,7 +189,7 @@ const ChatArea = ({
                   </div>
                   <div>
                     <h1 className="text-2xl font-medium text-gray-900">
-                      {isGenerating ? 'Generating content...' : notebook?.title || 'Untitled Notebook'}
+                      {isGenerating ? 'Génération du contenu...' : notebook?.title || 'Carnet sans titre'}
                     </h1>
                     <p className="text-sm text-gray-600">{sourceCount} source{sourceCount !== 1 ? 's' : ''}</p>
                   </div>
@@ -198,14 +198,14 @@ const ChatArea = ({
                 <div className="bg-gray-50 rounded-lg p-6 mb-6">
                   {isGenerating ? <div className="flex items-center space-x-2 text-gray-600">
                       
-                      <p>AI is analyzing your source and generating a title and description...</p>
-                    </div> : <MarkdownRenderer content={notebook?.description || 'No description available for this notebook.'} className="prose prose-gray max-w-none text-gray-700 leading-relaxed" />}
+                      <p>L'IA analyse votre source et génère un titre et une description...</p>
+                    </div> : <MarkdownRenderer content={notebook?.description || 'Aucune description disponible pour ce carnet.'} className="prose prose-gray max-w-none text-gray-700 leading-relaxed" />}
                 </div>
 
                 {/* Chat Messages */}
                 {(messages.length > 0 || pendingUserMessage || showAiLoading) && <div className="mb-6 space-y-4">
                     {messages.map((msg, index) => <div key={msg.id} className={`flex ${isUserMessage(msg) ? 'justify-end' : 'justify-start'}`}>
-                        <div className={`${isUserMessage(msg) ? 'max-w-xs lg:max-w-md px-4 py-2 bg-blue-500 text-white rounded-lg' : 'w-full'}`}>
+                        <div className={`${isUserMessage(msg) ? 'max-w-xs lg:max-w-md px-4 py-2 bg-[#0088c2] text-white rounded-lg' : 'w-full'}`}>
                           <div className={isUserMessage(msg) ? '' : 'prose prose-gray max-w-none text-gray-800'}>
                             <MarkdownRenderer content={msg.message.content} className={isUserMessage(msg) ? '' : ''} onCitationClick={handleCitationClick} isUserMessage={isUserMessage(msg)} />
                           </div>
@@ -217,7 +217,7 @@ const ChatArea = ({
                     
                     {/* Pending user message */}
                     {pendingUserMessage && <div className="flex justify-end">
-                        <div className="max-w-xs lg:max-w-md px-4 py-2 bg-blue-500 text-white rounded-lg">
+                        <div className="max-w-xs lg:max-w-md px-4 py-2 bg-[#0088c2] text-white rounded-lg">
                           <MarkdownRenderer content={pendingUserMessage} className="" isUserMessage={true} />
                         </div>
                       </div>}
@@ -252,7 +252,7 @@ const ChatArea = ({
                     {sourceCount} source{sourceCount !== 1 ? 's' : ''}
                   </div>
                 </div>
-                <Button onClick={() => handleSendMessage()} disabled={!message.trim() || isChatDisabled || isSending || !!pendingUserMessage}>
+                <Button onClick={() => handleSendMessage()} disabled={!message.trim() || isChatDisabled || isSending || !!pendingUserMessage} className="bg-[#0088c2] hover:bg-[#006a99]">
                   {isSending || pendingUserMessage ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
                 </Button>
               </div>
@@ -282,21 +282,21 @@ const ChatArea = ({
             <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center bg-gray-100">
               <Upload className="h-8 w-8 text-slate-600" />
             </div>
-            <h2 className="text-xl font-medium text-gray-900 mb-4">Add a source to get started</h2>
-            <Button onClick={() => setShowAddSourcesDialog(true)}>
+            <h2 className="text-xl font-medium text-gray-900 mb-4">Ajoutez une source pour commencer</h2>
+            <Button onClick={() => setShowAddSourcesDialog(true)} className="bg-[#0088c2] hover:bg-[#006a99]">
               <Upload className="h-4 w-4 mr-2" />
-              Upload a source
+              Télécharger une source
             </Button>
           </div>
 
           {/* Bottom Input */}
           <div className="w-full max-w-2xl">
             <div className="flex space-x-4">
-              <Input placeholder="Upload a source to get started" disabled className="flex-1" />
+              <Input placeholder="Téléchargez une source pour commencer" disabled className="flex-1" />
               <div className="flex items-center text-sm text-gray-500">
                 0 sources
               </div>
-              <Button disabled>
+              <Button disabled className="bg-[#0088c2] hover:bg-[#006a99]">
                 <Send className="h-4 w-4" />
               </Button>
             </div>
@@ -305,7 +305,7 @@ const ChatArea = ({
       
       {/* Footer */}
       <div className="p-4 border-t border-gray-200 flex-shrink-0">
-        <p className="text-center text-sm text-gray-500">InsightsLM can be inaccurate; please double-check its responses.</p>
+        <p className="text-center text-sm text-gray-500">Compucom LM peut être imprécis; veuillez vérifier ses réponses.</p>
       </div>
       
       {/* Add Sources Dialog */}

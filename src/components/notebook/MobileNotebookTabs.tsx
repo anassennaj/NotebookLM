@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { FileText, MessageCircle, NotebookPen } from 'lucide-react';
@@ -48,7 +47,7 @@ const MobileNotebookTabs = ({
           className="flex items-center space-x-2 text-sm data-[state=active]:bg-white data-[state=active]:shadow-sm"
         >
           <MessageCircle className="h-4 w-4" />
-          <span className="hidden sm:inline">Chat</span>
+          <span className="hidden sm:inline">Discussion</span>
         </TabsTrigger>
         <TabsTrigger 
           value="studio" 

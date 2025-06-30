@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -103,12 +102,12 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
         <div className="p-4 border-b border-gray-200 flex-shrink-0">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-medium text-gray-900">
-              {isAIResponse ? 'AI Response' : 'Note'}
+              {isAIResponse ? 'Réponse IA' : 'Note'}
             </h3>
             <div className="flex items-center space-x-2">
               {!isAIResponse && (
                 <Button variant="ghost" size="sm" onClick={handleEdit}>
-                  Edit
+                  Modifier
                 </Button>
               )}
               <Button variant="ghost" size="sm" onClick={onCancel}>
@@ -146,12 +145,12 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
                   className="text-red-600 hover:text-red-700"
                 >
                   <Trash2 className="h-4 w-4 mr-2" />
-                  Delete
+                  Supprimer
                 </Button>
               )}
             </div>
             <div className="text-xs text-gray-500">
-              {note?.created_at && new Date(note.created_at).toLocaleDateString()}
+              {note?.created_at && new Date(note.created_at).toLocaleDateString('fr-FR')}
             </div>
           </div>
         </div>
@@ -166,7 +165,7 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
       <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-medium text-gray-900">
-            {note ? 'Edit Note' : 'New Note'}
+            {note ? 'Modifier la note' : 'Nouvelle note'}
           </h3>
           <Button variant="ghost" size="sm" onClick={handleCancelEdit}>
             <X className="h-4 w-4" />
@@ -175,7 +174,7 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
         
         <div className="flex space-x-2 mb-4">
           <Input
-            placeholder="Note title"
+            placeholder="Titre de la note"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="flex-1"
@@ -188,7 +187,7 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
               disabled={isGeneratingTitle}
             >
               <Wand2 className="h-4 w-4 mr-2" />
-              {isGeneratingTitle ? 'Generating...' : 'Generate Title'}
+              {isGeneratingTitle ? 'Génération...' : 'Générer un titre'}
             </Button>
           )}
         </div>
@@ -197,7 +196,7 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
       {/* Content */}
       <div className="flex-1 p-4 overflow-hidden">
         <Textarea
-          placeholder="Write your note here..."
+          placeholder="Écrivez votre note ici..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
           className="w-full h-full resize-none border-0 focus-visible:ring-0 p-0"
@@ -217,7 +216,7 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
                 className="text-red-600 hover:text-red-700"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
-                Delete
+                Supprimer
               </Button>
             )}
           </div>
@@ -225,9 +224,10 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
             onClick={handleSave}
             disabled={!title.trim() || !content.trim() || isLoading}
             size="sm"
+            className="bg-[#0088c2] hover:bg-[#006a99]"
           >
             <Save className="h-4 w-4 mr-2" />
-            {isLoading ? 'Saving...' : 'Save'}
+            {isLoading ? 'Enregistrement...' : 'Enregistrer'}
           </Button>
         </div>
       </div>

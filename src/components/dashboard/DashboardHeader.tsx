@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { User, LogOut } from 'lucide-react';
@@ -18,14 +17,14 @@ const DashboardHeader = ({ userEmail }: DashboardHeaderProps) => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Logo />
-          <h1 className="text-xl font-medium text-gray-900">InsightsLM</h1>
+          <h1 className="text-xl font-medium text-gray-900">Compucom LM</h1>
         </div>
         
         <div className="flex items-center space-x-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="sm" className="p-0">
-                <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-purple-600 transition-colors">
+                <div className="w-8 h-8 bg-[#0088c2] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#006a99] transition-colors">
                   <User className="h-4 w-4 text-white" />
                 </div>
               </Button>
@@ -33,7 +32,7 @@ const DashboardHeader = ({ userEmail }: DashboardHeaderProps) => {
             <DropdownMenuContent align="end" className="w-48">
               <DropdownMenuItem onClick={logout} className="cursor-pointer">
                 <LogOut className="h-4 w-4 mr-2" />
-                Sign Out
+                Déconnexion
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

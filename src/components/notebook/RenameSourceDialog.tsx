@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   Dialog,
@@ -51,31 +50,32 @@ const RenameSourceDialog = ({ open, onOpenChange, source, notebookId }: RenameSo
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Rename {source?.title}?</DialogTitle>
+          <DialogTitle>Renommer {source?.title}?</DialogTitle>
           <DialogDescription>
-            Enter a new name for this source.
+            Entrez un nouveau nom pour cette source.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid gap-2">
-            <Label htmlFor="source-name">Source Name *</Label>
+            <Label htmlFor="source-name">Nom de la source *</Label>
             <Input
               id="source-name"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Enter source name"
+              placeholder="Entrez le nom de la source"
             />
           </div>
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={handleCancel}>
-            Cancel
+            Annuler
           </Button>
           <Button 
             onClick={handleSave}
             disabled={!title.trim() || isUpdating}
+            className="bg-[#0088c2] hover:bg-[#006a99]"
           >
-            {isUpdating ? 'Saving...' : 'Save'}
+            {isUpdating ? 'Enregistrement...' : 'Enregistrer'}
           </Button>
         </DialogFooter>
       </DialogContent>

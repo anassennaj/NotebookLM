@@ -1,4 +1,3 @@
-
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
@@ -13,8 +12,8 @@ export const useLogout = () => {
       await signOut();
       
       toast({
-        title: "Signed out",
-        description: "You have been successfully signed out."
+        title: "Déconnecté",
+        description: "Vous avez été déconnecté avec succès."
       });
       
       // Redirect to auth page
@@ -25,8 +24,8 @@ export const useLogout = () => {
       
       // Even if there's an error, redirect to auth page
       toast({
-        title: "Signed out",
-        description: "You have been signed out locally.",
+        title: "Déconnecté",
+        description: "Vous avez été déconnecté localement.",
         variant: "default"
       });
       

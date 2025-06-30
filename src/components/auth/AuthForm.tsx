@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -40,9 +39,9 @@ const AuthForm = () => {
       if (error) {
         console.error('Sign in error:', error);
         if (error.message.includes('Invalid login credentials')) {
-          throw new Error('Invalid email or password. Please check your credentials and try again.');
+          throw new Error('Email ou mot de passe invalide. Veuillez vérifier vos identifiants et réessayer.');
         } else if (error.message.includes('Email not confirmed')) {
-          throw new Error('Please check your email and click the confirmation link before signing in.');
+          throw new Error('Veuillez vérifier votre email et cliquer sur le lien de confirmation avant de vous connecter.');
         } else {
           throw error;
         }
@@ -51,8 +50,8 @@ const AuthForm = () => {
       console.log('Sign in successful:', data.user?.email);
       
       toast({
-        title: "Welcome back!",
-        description: "You have successfully signed in.",
+        title: "Bienvenue !",
+        description: "Vous êtes connecté avec succès.",
       });
 
       // The AuthContext will handle the redirect automatically
@@ -60,7 +59,7 @@ const AuthForm = () => {
     } catch (error: any) {
       console.error('Auth form error:', error);
       toast({
-        title: "Sign In Error",
+        title: "Erreur de connexion",
         description: error.message,
         variant: "destructive",
       });
@@ -72,9 +71,9 @@ const AuthForm = () => {
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
-        <CardTitle>Sign In</CardTitle>
+        <CardTitle>Connexion</CardTitle>
         <CardDescription>
-          Enter your credentials to access your notebooks
+          Entrez vos identifiants pour accéder à vos carnets
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -87,23 +86,23 @@ const AuthForm = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="Enter your email"
+              placeholder="Entrez votre email"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Mot de passe</Label>
             <Input
               id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              placeholder="Enter your password"
+              placeholder="Entrez votre mot de passe"
               minLength={6}
             />
           </div>
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? 'Signing In...' : 'Sign In'}
+            {loading ? 'Connexion en cours...' : 'Se connecter'}
           </Button>
         </form>
       </CardContent>

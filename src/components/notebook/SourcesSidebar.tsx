@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Plus, MoreVertical, Trash2, Edit, Loader2, CheckCircle, XCircle, Upload } from 'lucide-react';
@@ -235,7 +234,7 @@ const SourcesSidebar = ({
         <div className="flex space-x-2">
           <Button variant="outline" size="sm" className="flex-1" onClick={() => setShowAddSourcesDialog(true)}>
             <Plus className="h-4 w-4 mr-2" />
-            Add
+            Ajouter
           </Button>
         </div>
       </div>
@@ -244,7 +243,7 @@ const SourcesSidebar = ({
         <div className="p-4">
           {isLoading ? (
             <div className="text-center py-8">
-              <p className="text-sm text-gray-600">Loading sources...</p>
+              <p className="text-sm text-gray-600">Chargement des sources...</p>
             </div>
           ) : sources && sources.length > 0 ? (
             <div className="space-y-4">
@@ -270,11 +269,11 @@ const SourcesSidebar = ({
                   <ContextMenuContent>
                     <ContextMenuItem onClick={() => handleRenameSource(source)}>
                       <Edit className="h-4 w-4 mr-2" />
-                      Rename source
+                      Renommer la source
                     </ContextMenuItem>
                     <ContextMenuItem onClick={() => handleRemoveSource(source)} className="text-red-600 focus:text-red-600">
                       <Trash2 className="h-4 w-4 mr-2" />
-                      Remove source
+                      Supprimer la source
                     </ContextMenuItem>
                   </ContextMenuContent>
                 </ContextMenu>
@@ -285,8 +284,8 @@ const SourcesSidebar = ({
               <div className="w-16 h-16 bg-gray-200 rounded-lg mx-auto mb-4 flex items-center justify-center">
                 <span className="text-gray-400 text-2xl">📄</span>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Saved sources will appear here</h3>
-              <p className="text-sm text-gray-600 mb-4">Click Add source above to add PDFs, text, or audio files.</p>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Les sources enregistrées apparaîtront ici</h3>
+              <p className="text-sm text-gray-600 mb-4">Cliquez sur Ajouter une source ci-dessus pour ajouter des PDF, du texte ou des fichiers audio.</p>
             </div>
           )}
         </div>
@@ -308,19 +307,19 @@ const SourcesSidebar = ({
       <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete {selectedSource?.title}?</AlertDialogTitle>
+            <AlertDialogTitle>Supprimer {selectedSource?.title}?</AlertDialogTitle>
             <AlertDialogDescription>
-              You're about to delete this source. This cannot be undone.
+              Vous êtes sur le point de supprimer cette source. Cette action est irréversible.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>Annuler</AlertDialogCancel>
             <AlertDialogAction 
               onClick={confirmDelete} 
               className="bg-red-600 hover:bg-red-700" 
               disabled={isDeleting}
             >
-              {isDeleting ? 'Deleting...' : 'Delete'}
+              {isDeleting ? 'Suppression...' : 'Supprimer'}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

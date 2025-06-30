@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -62,24 +61,24 @@ const MultipleWebsiteUrlsDialog = ({
         <DialogHeader>
           <DialogTitle className="flex items-center space-x-2">
             <Link className="h-5 w-5 text-green-600" />
-            <span>Add Multiple Website URLs</span>
+            <span>Ajouter plusieurs URLs de sites web</span>
           </DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4">
           <div>
-            <Label className="text-sm font-medium">Website URLs</Label>
+            <Label className="text-sm font-medium">URLs de sites web</Label>
             <p className="text-sm text-gray-600 mb-3">
-              Enter multiple website URLs, one per line. Each URL will be scraped as a separate source.
+              Entrez plusieurs URLs de sites web, une par ligne. Chaque URL sera extraite comme une source distincte.
             </p>
           </div>
 
           <div>
             <Textarea
-              placeholder={`Enter URLs one per line, for example:
-https://example.com
-https://another-site.com
-https://third-website.org`}
+              placeholder={`Entrez les URLs une par ligne, par exemple:
+https://exemple.com
+https://autre-site.com
+https://troisieme-site.org`}
               value={urlsText}
               onChange={(e) => setUrlsText(e.target.value)}
               className="min-h-32 resize-y"
@@ -87,20 +86,21 @@ https://third-website.org`}
             />
             {validUrls.length > 0 && (
               <p className="text-sm text-gray-500 mt-2">
-                {validUrls.length} URL{validUrls.length !== 1 ? 's' : ''} detected
+                {validUrls.length} URL{validUrls.length !== 1 ? 's' : ''} détectée{validUrls.length !== 1 ? 's' : ''}
               </p>
             )}
           </div>
 
           <div className="flex justify-end space-x-2 pt-4">
             <Button variant="outline" onClick={handleClose}>
-              Cancel
+              Annuler
             </Button>
             <Button 
               onClick={handleSubmit} 
               disabled={!isValid || isSubmitting}
+              className="bg-[#0088c2] hover:bg-[#006a99]"
             >
-              {isSubmitting ? 'Adding...' : `Add ${validUrls.length} Website${validUrls.length !== 1 ? 's' : ''}`}
+              {isSubmitting ? 'Ajout en cours...' : `Ajouter ${validUrls.length} site${validUrls.length !== 1 ? 's' : ''} web`}
             </Button>
           </div>
         </div>
