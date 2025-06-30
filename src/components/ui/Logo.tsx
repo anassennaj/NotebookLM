@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface LogoProps {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
   className?: string;
 }
 
@@ -10,7 +10,9 @@ const Logo = ({ size = 'md', className = '' }: LogoProps) => {
     sm: 'w-6 h-6',
     md: 'w-8 h-8', 
     lg: 'w-16 h-16',
-    xl: 'w-24 h-24'
+    xl: 'w-24 h-24',
+    '2xl': 'w-36 h-36',
+    '3xl': 'w-48 h-48'
   };
 
   return (
